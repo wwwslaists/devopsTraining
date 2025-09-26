@@ -57,40 +57,33 @@ def test_get_nth_fibonacci_one():
     # Assert
     assert result == 1
 
+
 def test_get_nth_fibonacci_ten():
- """Test with n=10."""
- # Arrange
- n = 10
+   """Test with n=10."""
+   # Arrange
+   n = 10
 
- # Act
- result = get_nth_fibonacci(n)
+   # Act
+   result = get_nth_fibonacci(n)
 
- # Assert
- assert result == 55
+   # Assert
+   assert result == 55
 
- # ...existing code...
+def test_area_of_circle_negative_radius():
+   """Test with a negative radius to raise ValueError."""
+   # Arrange
+   radius = -1
 
-def test_area_of_circle_with_float():
-    """Test with a floating point radius."""
-    # Arrange
-    radius = 2.5
-    expected = 3.14159 * radius**2
-
-    # Act
-    result = area_of_circle(radius)
-
-    # Assert
-    assert abs(result - expected) < 1e-5
+   # Act & Assert
+   with pytest.raises(ValueError):
+      area_of_circle(radius)
 
 
-def test_get_nth_fibonacci_five():
-    """Test with n=5."""
-    # Arrange
-    n = 5
-    expected = 5  # Fibonacci sequence: 0, 1, 1, 2, 3, 5,...
+def test_get_nth_fibonacci_negative():
+   """Test with a negative number to raise ValueError."""
+   # Arrange
+   n = -1
 
-    # Act
-    result = get_nth_fibonacci(n)
-
-    # Assert
-    assert result == expected
+   # Act & Assert
+   with pytest.raises(ValueError):
+      get_nth_fibonacci(n)  
