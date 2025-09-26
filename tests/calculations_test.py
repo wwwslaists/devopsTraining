@@ -18,33 +18,79 @@ def test_area_of_circle_positive_radius():
     # Act
     result = area_of_circle(radius)
 
-    def test_area_of_circle_negative_radius():
-        """Test that a negative radius raises a ValueError."""
-        with pytest.raises(ValueError) as excinfo:
-            area_of_circle(-2)
-        assert "Radius cannot be negative" in str(excinfo.value)
+    # Assert
+    assert abs(result - 3.14159) < 1e-5
 
 
-    def test_get_nth_fibonacci_negative():
-        """Test that a negative n raises a ValueError."""
-        with pytest.raises(ValueError) as excinfo:
-            get_nth_fibonacci(-5)
-        assert "n cannot be negative" in str(excinfo.value)
+def test_area_of_circle_zero_radius():
+    """Test with a radius of zero."""
+    # Arrange
+    radius = 0
+
+    # Act
+    result = area_of_circle(radius)
+
+    # Assert
+    assert result == 0
 
 
-    def test_get_nth_fibonacci_two():
-        """Test with n=2."""
-        # Arrange & Act
-        result = get_nth_fibonacci(2)
-        
-        # Assert
-        assert result == 1
+def test_get_nth_fibonacci_zero():
+    """Test with n=0."""
+    # Arrange
+    n = 0
+
+    # Act
+    result = get_nth_fibonacci(n)
+
+    # Assert
+    assert result == 0
 
 
-    def test_get_nth_fibonacci_three():
-        """Test with n=3."""
-        # Arrange & Act
-        result = get_nth_fibonacci(3)
-        
-        # Assert
-        assert result == 2
+def test_get_nth_fibonacci_one():
+    """Test with n=1."""
+    # Arrange
+    n = 1
+
+    # Act
+    result = get_nth_fibonacci(n)
+
+    # Assert
+    assert result == 1
+
+def test_get_nth_fibonacci_ten():
+ """Test with n=10."""
+ # Arrange
+ n = 10
+
+ # Act
+ result = get_nth_fibonacci(n)
+
+ # Assert
+ assert result == 55
+
+ # ...existing code...
+
+def test_area_of_circle_with_float():
+    """Test with a floating point radius."""
+    # Arrange
+    radius = 2.5
+    expected = 3.14159 * radius**2
+
+    # Act
+    result = area_of_circle(radius)
+
+    # Assert
+    assert abs(result - expected) < 1e-5
+
+
+def test_get_nth_fibonacci_five():
+    """Test with n=5."""
+    # Arrange
+    n = 5
+    expected = 5  # Fibonacci sequence: 0, 1, 1, 2, 3, 5,...
+
+    # Act
+    result = get_nth_fibonacci(n)
+
+    # Assert
+    assert result == expected
